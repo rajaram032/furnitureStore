@@ -1,0 +1,527 @@
+[
+  {
+    "category_title": "Recliner",
+    "image": "images/recliner.png",
+    "alt": "Recliner",
+    "products": [
+      {
+        "id": "product-001",
+        "product_name": "Emila One Seater Motorized Recliner",
+        "subtitle": "LazeOn By Urban Ladder",
+        "image": "images/products/recliner1.jpg",
+         "images": ["images/products/recliner1.jpg", "images/products/recliner11.png", "images/products/recliner12.gif", "images/products/recliner13.png"],
+        "price": 36629,
+        "old_price": 66599,
+        "description": "Next-level cosy. The Emila motorised recliner sofa takes comfort to a whole new dimension, with extra-plush armrests, headrests, and seats. The cleverly designed backrest reclines without taking up any extra space. Sink in, kick back, and cool your heels at the push of a button Fabric upholstery Please note that only the seats on the two ends recline for the 3 seater Please refer to images for dimension detailsIndoor use only.",
+        "size": "99.0 cm H x 237.0 cm W x 96.0 cm L",
+        "color": "Blue"
+      },
+       {
+        "id": "product-002",
+        "product_name": "Emila One Seater Motorized Recliner",
+       "subtitle": "LazeOn By Urban Ladder",
+        "image": "images/products/recliner2.jpg",
+         "images": ["images/products/recliner2.jpg", "images/products/recliner21.jpg", "images/products/recliner22.png", "images/products/recliner23.gif"],
+        "price": 32633,
+        "old_price": 66599,
+        "description": "Next-level cosy. The Emila motorised recliner sofa takes comfort to a whole new dimension, with extra-plush armrests, headrests, and seats. The cleverly designed backrest reclines without taking up any extra space. Sink in, kick back, and cool your heels at the push of a button Fabric upholstery Please note that only the seats on the two ends recline for the 3 seater Please refer to images for dimension detailsIndoor use only.",
+        "size": "99.0 cm H x 112.0 cm W x 96.0 cm L",
+        "color": "Grey"
+      },
+      {
+        "id": "product-003",
+        "product_name": "Griffin One Seater Manual Recliner",
+       "subtitle": "By Little Nap Designsr",
+        "image": "images/products/recliner3.jpg",
+        "images": ["images/products/recliner3.jpg", "images/products/recliner31.jpg", "images/products/recliner32.jpg", "images/products/recliner33.gif"],
+        "price": 18829,
+        "old_price": 53799,
+        "description": "Poised and plush. With a generously cushioned body and a classic shape, Griffin recliner is a seat treat. Covered in premium upholstery, the recliner mechanism allows you to lean almost 180 degrees back and also unfolds with a footprint, giving you maximum comfort. Add this to your living or bedroom spaces for a contemporary inviting appeal.Choose from leatherette or fabric upholstery Please refer to the images for dimension details Worry-free! We've tested our recliners for 25,000 cycles - this means you can use it for 15-20 years without a second thought. Rest assured. Our recliners have passed load-bearing capacity testing for up to 140kg, on each seat.Indoor use only",
+        "size": "100.0 cm H x 95.5 cm W x 96.0 cm L",
+        "color": "Grey"
+      }
+    ]
+  },
+  {
+    "category_title": "Dining Set",
+    "image": "images/Rectangle 275.png",
+    "alt": "Dining Set",
+    "products": [
+      {
+        "id": "product-010",
+        "product_name": "Reeves Rosewood 4 Seater Dining Set ",
+        "subtitle": "By Woodenmood",
+        "image": "images/products/dining1.jpg",
+        "images": ["images/products/dining1.jpg", "images/products/dining11.jpg", "images/products/dining12.jpg", "images/products/dining13.jpg"],
+        "price": 35361,
+        "old_price": 48441,
+        "description": "A perfect blend of style and durability. Crafted with precision and designed for smaller dining areas, it offers a comfortable and elegant dining experience. Its timeless design seamlessly complements various decor styles, providing both functionality and enduring sophistication to your dining space. Elevate your dining area with our sturdy, compact, and stylish dining set..",
+        "size": "76.0 cm H x 83.0 cm W x 83.0 cm L",
+        "color": "Brown"
+      },
+        {
+        "id": "product-011",
+        "product_name": "Augusta Solid Wood 4 Seater Dining Set ",
+        "subtitle": "By Urban Ladder",
+        "image": "images/products/dining2.jpg",
+        "images": ["images/products/dining2.jpg", "images/products/dining21.jpg", "images/products/dining22.jpg", "images/products/dining23.png"],
+        "price": 19928,
+        "old_price": 34197,
+        "description": "Celebrate the joy of eating. A nod to mid century aesthetics, the Augusta dining set is the perfect compact dining addition to home. The table stands tall with elegant slender legs while the chair makes for comfortable seating with its curved back and upholstered seat. Make every meal a delicious celebration of shared joy...",
+        "size": "74.0 cm H x 75.0 cm W x 120.0 cm L",
+        "color": "Grey"
+      }, {
+        "id": "product-012",
+        "product_name": "Lawson Solid Wood 4 Seater Dining Set",
+        "subtitle": "By Urban Ladder",
+        "image": "images/products/dining3.jpg",
+        "images": ["images/products/dining3.jpg", "images/products/dining31.jpg", "images/products/dining32.jpg", "images/products/dining33.png"],
+        "price": 18588,
+        "old_price": 34997,
+        "description": "Celebrate the joy of eating. A nod to mid century aesthetics, the Augusta dining set is the perfect compact dining addition to home. The table stands tall with elegant slender legs while the chair makes for comfortable seating with its curved back and upholstered seat. Make every meal a delicious celebration of shared joy...",
+        "size": "74.0 cm H x 75.0 cm W x 120.0 cm L",
+        "color": "Dark Brown"
+      }
+    ]
+  },
+  {
+    "category_title": "Decor",
+    "image": "images/Rectangle 276.png",
+    "alt": "Decor",
+    "products": [
+      {
+        "id": "product-020",
+        "product_name": "Inaya Multi Coloured Iron Wall Accent",
+        "subtitle": "By Vedas",
+        "image": "images/products/decor1.jpeg",
+        "images": ["images/products/decor1.jpeg","images/products/decor11.jpg", "images/products/decor1.jpeg", "images/products/decor11.jpg"],
+        "price": 2813,
+        "old_price": 4199,
+        "description": "This modern abstract piece a long-lasting addition to your collection, and the unique pierced and layered metal design provides texture and depth to your wall for extra visual interest. Add color and dimension to your walls with this wall sculpture. Organically inspired discs cluster to create this beautiful piece. Use along for a simple statement, or cluster in multiples for a dynamic and truly unique statement.",
+        "size": "48.1 cm H x 5.1 cm W x 48.3 cm L",
+        "color": "Multi-color"
+      },{
+        "id": "product-021",
+        "product_name": "Multi Coloured Iron Wall Accent",
+        "subtitle": "By Vedas",
+        "image": "images/products/decor2.jpg",
+        "images": ["images/products/decor2.jpg", "images/products/decor21.jpg", "images/products/decor22.jpg", "images/products/decor21.jpg"],
+        "price": 4649,
+        "old_price": 7499,
+        "description": "This Metal Wall Art is perfectly proportioned to fit every aesthetic need and is designed to be sufficiently subtle depending on the position and according to the need. This framed wall art will surely fill any vacant space, giving completion and balance to the design impact of any room or space..",
+        "size": "59.8 cm H x 5.0 cm W x 60.0 cm L",
+        "color": "Multi-color"
+      },{
+        "id": "product-022",
+        "product_name": "Black Metal Round Analog Wall Clock",
+        "subtitle": "By Handicrafts Town",
+        "image": "images/products/decor3.jpg",
+        "images": ["images/products/decor3.jpg", "images/products/decor31.jpg", "images/products/decor3.jpg", "images/products/decor32.jpg"],
+        "price": 3299,
+        "old_price": 5999,
+        "description": "Introducing a standout home decor piece from Handicrafts Town crafted with the finest materials and meticulous attention to detail. This product embodies elegance and sophistication, adding a touch of luxury to your living space. Its timeless design seamlessly complements any decor style, making it a versatile and enduring addition to your home.",
+        "size": "59.8 cm H x 5.0 cm W x 60.0 cm L",
+        "color": "Black"
+      }
+    ]
+  },
+  {
+    "category_title": "Study Tables",
+    "image": "images/Rectangle 277 w.png",
+    "alt": "Study Tables",
+    "products": [
+      {
+        "id": "product-030",
+        "product_name": "Iris Engineered Wood Study Table",
+        "subtitle": "By A Globia Creations",
+        "image": "images/products/study1.jpg",
+        "images": ["images/products/study1.jpg", "images/products/study11.jpg", "images/products/study12.jpg", "images/products/study13.jpg"],
+        "price": 4486,
+        "old_price": 5157,
+        "description": "Introducing our sturdy and durable study table, the perfect blend of compact design and timeless elegance. Crafted to withstand daily use, it offers a space-saving solution without compromising on style. Its sleek and minimalist design effortlessly complements any decor, making it a functional and sophisticated addition to your workspace. Elevate your study environment with our compact and elegant study table, where durability meets lasting elegance.",
+        "size": "75.0 cm H x 45.0 cm W x 90.0 cm L",
+        "color": "Wenge "
+      },{
+        "id": "product-031",
+        "product_name": "Mallium Engineered Wood Study Table",
+        "subtitle": "By Bluewud",
+        "image": "images/products/study2.jpg",
+        "images": ["images/products/study2.jpg", "images/products/study21.jpg", "images/products/study22.jpg", "images/products/study23.jpg"],
+        "price": 7440,
+        "old_price": 9300,
+        "description": "Life can just be simple... Perfect companion, for the perfect little kiddo's study time!",
+        "size": "72.5 cm H x 103.0 cm W x 40.0 cm L",
+        "color": "Walnut finish"
+      },{
+        "id": "product-032",
+        "product_name": "Double Trouble Kids Table",
+        "subtitle": "Ditto by Boingg",
+        "image": "images/products/study3.jpg",
+        "images": ["images/products/study3.jpg", "images/products/study31.jpg", "images/products/study32.jpg", "images/products/study33.jpg"],
+        "price": 18000,
+        "old_price":22500,
+        "description": "Siblings who Study together, Excel together! The perfect addition for the kiddy duo's study time",
+        "size": "152.0 cm H x 208.0 cm W x 61.0 cm L",
+        "color": "Oak "
+      }
+    
+    ]
+  },
+  {
+    "category_title": "Mattress",
+    "image": "images/Rectangle 279.png",
+    "alt": "Mattress",
+    "products": [
+      {
+        "id": "product-040",
+        "product_name": "Essential Foam Mattress",
+        "subtitle": "By Urban Ladder",
+        "image": "images/products/mattress1.jpg",
+        "images":["images/products/mattress1.jpg","images/products/mattress11.jpg","images/products/mattress12.png","images/products/mattress13.jpg"],
+        "price": 12499,
+        "old_price": 5749,
+        "description": "Core is made of 32-density foam. It provides just the right combination of comfort and support for ergonomic sleep.Hotel grade fire retardant. The fabric adheres to the highest standards of safety, keeping you in mind.",
+        "size": "9.9 cm H x 90.9 cm W x 198.1 cm L",
+        "type": "Single"
+      },  {
+        "id": "product-041",
+        "product_name": "Orthopedic Memory Foam Mattress",
+        "subtitle": "By Urban Ladder",
+        "image": "images/products/mattress2.jpg",
+        "images":["images/products/mattress2.jpg","images/products/mattress21.jpg","images/products/mattress22.jpg","images/products/mattress23.png"],
+        "price": 12899,
+        "old_price": 26799,
+        "description": "Designed to ensure that you sleep like a baby, this is our softest mattress in the Essential range. The memory foam in this mattress contours to your body and makes for an uber-relaxing sleep experience.",
+        "size": "15.2 cm H x 152.4 cm W x 198.1 cm L",
+        "type": "Queen"
+      },{
+        "id": "product-042",
+        "product_name": "Cloud Pocket Spring Mattress",
+        "subtitle": "By Urban Ladder",
+        "image": "images/products/mattress3.jpg",
+        "images":["images/products/Mattress3.jpg","images/products/Mattress31.jpg","images/products/Mattress32.jpg","images/products/Mattress33.jpg"],
+        "price": 16079,
+        "old_price": 33499,
+        "description": "3-Zone spring core with differentiated spring stiffness to enhance comfort and support for every part of your body.23 inner-sprung, pocketed springs per sqft to provide enhanced durability and innerspring action.Independent Action springs provide Full-Motion Separation; reducing disturbance due to partner movements.Edge Support System, with reinforced spring support and foam encasing to avoid sagging and edge roll-off.",
+        "size": "198.1 cm H x 151.9 cm W x 15.0 cm L",
+        "type": "Queen"
+      }
+    
+    
+    ]
+  },
+  {
+    "category_title": "Beds",
+    "image": "images/Rectangle 278.png",
+    "alt": "Beds",
+    "products": [
+      {
+        "id": "product-050",
+        "product_name": "Roverb Engineered Wood Single Size Non Storage Bed ",
+        "subtitle": "By Bluewud",
+        "image": "images/products/bed1.jpg",
+        "images":["images/products/bed1.jpg","images/products/bed11.jpg","images/products/bed12.jpg","images/products/bed13.jpg"],
+        "price": 7358.00,
+        "old_price":11499.00,
+        "description": "Urban Ladder always bring us the unexpected. We appreciate it and keep up the enthusiasm.Your satisfactory product experience is our responsibility. To ensure the same, we have products that rank high both in style and quality.",
+        "size": "34.5 cm H x 96.5 cm W x 197.0 cm L",
+        "type": "single"
+      },{
+        "id": "product-051",
+        "product_name": "Takeo Engineered Wood Single Size Box Storage Bed",
+        "subtitle": "By Direct Factory",
+        "image": "images/products/bed2.jpg",
+        "images":["images/products/bed2.jpg","images/products/bed21.jpg","images/products/bed22.jpg","images/products/bed23.jpg"],
+        "price": 8099.00,
+        "old_price":17999.00,
+        "description": "Indulge in excellence with this standout product from Df2H- a true testament to quality and innovation.",
+        "size": "81.3 cm H x 99.1 cm W x 203.2 cm L",
+        "type": "single"
+      },{
+        "id": "product-052",
+        "product_name": "Zoey Bed with Zoey Bedside Table",
+        "subtitle": "SimplyWud By Urban Ladder",
+        "image": "images/products/bed3.jpg",
+        "images":["images/products/bed3.jpg","images/products/bed31.png","images/products/bed32.png","images/products/bed33.png"],
+        "price": 11898.00,
+        "old_price":21498.00,
+        "description": "It is always recommended to follow the prescribed weight limits.Always use coasters or mats while keeping hot materials on the surfaceProducts can be dismantled and re-assembled multiple times in case of shifting/moving around furnitureColour / polish can fade due to prolonged exposure to sunlight.Avoid using abrasive materials like scrub pads for cleaning the surface as they may scratch the surface.",
+        "size": "80.0 cm H x 200.9 cm W x 156.0 cm L",
+        "type": "Queen"
+      }
+    ]
+  },
+  {
+    "category_title": "Wardrobes",
+    "image": "images/Rectangle 280.png",
+    "alt": "Wardrobes",
+    "products": [
+      {
+        "id": "product-060",
+        "product_name": "Tyche Engineered Wood 2 Door Wardrobe ",
+        "subtitle": "By Direct Factory",
+        "image": "images/products/wardrobe1.jpg",
+        "images":["images/products/wardrobe1.jpg","images/products/wardrobe11.jpg","images/products/wardrobe12.jpg","images/products/wardrobe13.jpg"],
+        "price": 8549.00,
+        "old_price": 18999.00,
+        "description": "Plenty of space for all your clothes.",
+        "size": "181.8 cm H x 74.3 cm W x 44.6 cm L",
+        "color": "Wenge"
+      }
+    ]
+  },
+  {
+    "category_title": "Sofa",
+    "image": "images/Rectangle 281.png",
+    "alt": "Sofa",
+    "products": [
+      {
+        "id": "product-070",
+        "product_name": "Eileen Wooden Sofa ",
+        "subtitle": "By Urban Ladder",
+        "image": "images/products/sofa1.png",
+        "images":["images/products/sofa1.png","images/products/sofa11.jpg","images/products/sofa12.jpg","images/products/sofa13.jpg"],
+        "price": 10907.00,
+        "old_price": 20199.00,
+        "description": "Stylish and comfy for your living room.",
+        "size": "80.0 cm H x 70.0 cm W x 70.0 cm L",
+        "color": "Harvest Yellow",
+        "type":"1 Seater"
+      }
+    ]
+  },
+  {
+    "category_title": "Chairs",
+    "image": "images/chairs.png",
+    "alt": "Chairs",
+    "products": [
+      {
+        "id": "product-080",
+        "product_name": "Xcelo Study Chair",
+        "subtitle": "By MBTC",
+        "image": "images/products/chair1.jpg",
+        "images":["images/products/chair1.jpg","images/products/chair11.jpg","images/products/chair12.jpg","images/products/chair13.jpg"],
+        "price": 4759.00,
+        "old_price": 6610.00,
+        "description": "Perfect statement piece for any room.",
+        "size": "91.4 cm H x 50.8 cm W x 48.3 cm L",
+        "color": " Black"
+      }
+    ]
+  },
+  {
+    "category_title": "Outdoor",
+    "image": "images/Rectangle 275 k.png",
+    "alt": "Outdoor",
+    "products": [
+      {
+        "id": "product-090",
+        "product_name": "Amira Metal Outdoor",
+        "subtitle": "By Art & Abode",
+        "image": "images/products/outdoor1.jpg",
+        "images":["images/products/outdoor1.jpg","images/products/outdoor11.jpg","images/products/outdoor12.jpg","images/products/outdoor1.jpg"],
+        "price": 6020.00,
+        "old_price": 7000.00,
+        "description": "Weather-resistant and stylish.",
+        "size": "41.0 cm H x 39.0 cm W x 47.0 cm L",
+        "color": "White"
+      }
+    ]
+  },
+  {
+    "category_title": "Side Table",
+    "image": "images/Rectangle 276 h.png",
+    "alt": "Side Table",
+    "products": [
+      {
+        "id": "product-100",
+        "product_name": "Rostrum Solid Wood Side Table in Finish",
+        "subtitle": "By Urban Ladder",
+        "image": "images/products/side_table1.jpg",
+        "images":["images/products/side_table1.jpg","images/products/side_table11.jpg","images/products/side_table12.jpg","images/products/side_table13.png"],
+        "price": 5459.00,
+        "old_price": 10499.00,
+        "description": "Absolutely gorgeous. That’s the Rostrum side table for you. A gorgeous warm wooden top mounted on a beautiful brass bell-shaped structure. This side table will help you add some warmth and class to your living room.",
+        "size": "50.3 cm H x 25.9 cm W x 25.9 cm L",
+        "color": "Gold",
+        "type":"Tall "
+        
+      }
+    ]
+  },
+  {
+    "category_title": "Dressing Table",
+    "image": "images/Rectangle 277.png",
+    "alt": "Dressing Table",
+    "products": [
+      {
+        "id": "product-110",
+        "product_name": "Adaly Engineered Wood Dressing Table",
+        "subtitle": "By Bluewud",
+        "image": "images/products/dressing1.jpg",
+        "images":["images/products/dressing1.jpg","images/products/dressing11.jpg","images/products/dressing12.jpg","images/products/dressing13.jpg"],
+        "price": 4959.00,
+        "old_price": 7999.00,
+        "description": "Perfect for your grooming essentials.",
+        "size": "180.0 cm H x 45.0 cm W x 37.0 cm L",
+        "color": "Walnut & White Finish"
+      }
+    ]
+  },
+  {
+    "category_title": "TV Units",
+    "image": "images/Rectangle 266.png",
+    "alt": "TV Units",
+    "products": [
+      {
+        "id": "product-120",
+        "product_name": "Astrid Engineered Wood TV Unit",
+        "subtitle": "By Urban Ladder",
+        "image": "images/products/tv_unit1.jpg",
+         "images":["images/products/tv_unit1.jpg","images/products/tv_unit11.jpg","images/products/tv_unit12.jpg","images/products/tv_unit13.jpg"],
+        "price":10079.00,
+        "old_price": 17999.00,
+        "description": "Organized and stylish entertainment area.",
+        "size": "35.1 cm H x 119.9 cm W x 35.1 cm L",
+        "color": "Black Finish"
+      }
+    ]
+  },
+  {
+    "category_title": "Bookshelves",
+    "image": "images/Rectangle 275 h.png",
+    "alt": "Bookshelves",
+    "products": [
+      {
+        "id": "product-130",
+        "product_name": "Megan Engineered Wood Bookshelf",
+        "subtitle": "SimplyWud By Urban Ladder",
+        "image": "images/products/bookshelf1.jpg",
+         "images":["images/products/bookshelf1.jpg","images/products/bookshelf11.jpg","images/products/bookshelf12.jpg","images/products/bookshelf13.png"],
+        "price": 2239.00,
+        "old_price": 6399.00,
+        "description": "Display your favorite books & décor.",
+        "size": "90.0 cm H x 29.5 cm W x 60.3 cm L",
+        "color": "Classic Walnut",
+        "type":"3 feet"
+      }
+    ]
+  },
+  {
+    "category_title": "Coffee Table",
+    "image": "images/Rectangle 276 j.png",
+    "alt": "Coffee Table",
+    "products": [
+      {
+        "id": "product-140",
+        "product_name": "Osnale Engineered Wood Coffee Table",
+        "subtitle": "By Bluewud",
+        "image": "images/products/coffee1.jpg",
+         "images":["images/products/coffee1.jpg","images/products/coffee11.jpg","images/products/coffee12.jpg","images/products/coffee13.jpg"],
+        "price": 2020.00,
+        "old_price": 4229.00,
+        "description": "Contemporary centerpiece for your living room.",
+        "size": "41.0 cm H x 93.0 cm W x 45.0 cm L",
+        "color": "Brown Maple Finish"
+      }
+    ]
+  },
+  {
+    "category_title": "Living",
+    "image": "images/Rectangle 277 p.png",
+    "alt": "Living",
+    "products": [
+      {
+        "id": "product-150",
+        "product_name": "Maisy Engineered Wood TV Unit",
+        "subtitle": "By Bluewud",
+        "image": "images/products/living1.jpg",
+        "images":["images/products/living1.jpg","images/products/living11.jpg","images/products/living12.jpg","images/products/living13.jpg"],
+        "price":1343.00,
+        "old_price": 2999.00,
+        "description": "Complete comfort and style package.",
+        "size": "13.0 cm H x 90.0 cm W x 25.0 cm L",
+        "color": "Walnut & Frosty Finish",
+        "type":"50 inch"
+      }
+    ]
+  },
+  {
+    "category_title": "Patio Sets",
+    "image": "images/Rectangle 266 w.png",
+    "alt": "Patio Sets",
+    "products": [
+      {
+        "id": "product-160",
+        "product_name": "Palma Plastic Outdoor Chair",
+        "subtitle": "By Urban Ladder",
+        "image": "images/products/patio1.jpg",
+        "images":["images/products/patio1.jpg","images/products/patio11.jpg","images/products/patio12.jpg","images/products/patio13.jpg"],
+        "price": 8719.00,
+        "old_price": 14579.00,
+        "description": "The Palma patio chairs certainly describe beauty in small things. This low heighted set is a convenient outdoor seating option whether be it your balcony or lawn. You can also bring it in as an extra seating around the house. This set will make you fall in love with the little moments in life. ",
+        "size": "266.5 cm H x 70.5 cm W x 75.5 cm L",
+        "color": "White"
+      }
+    ]
+  },
+  {
+    "category_title": "Garden Benches",
+    "image": "images/Rectangle 275 e.png",
+    "alt": "Garden Benches",
+    "products": [
+      {
+        "id": "product-170",
+        "product_name": "Lovers Bench",
+        "subtitle": "By Takasho",
+        "image": "images/products/garden_bench1.jpg",
+        "images":["images/products/garden_bench1.jpg","images/products/garden_bench11.jpg","images/products/garden_bench12.jpg","images/products/garden_bench13.jpg"],
+        "price": 18039.00,
+        "old_price": 24579.00,
+        "description": "Relax outdoors with style and comfort.",
+        "size": "206.0 cm H x 131.0 cm W x 50.0 cm L",
+        "color": "White"
+      }
+    ]
+  },
+  {
+    "category_title": "Hutch",
+    "image": "images/Rectangle 276 r.png",
+    "alt": "Hutch",
+    "products": [
+      {
+        "id": "product-180",
+        "product_name": "Ohio Solid Wood Laptop Table",
+        "subtitle": "With glass doors and drawers",
+        "image": "images/products/hutch1.jpg",
+        "images":["images/products/hutch1.jpg","images/products/hutch11.jpg","images/products/hutch12.jpg","images/products/hutch13.jpg"],
+        "price": 1549.00,
+        "old_price": 2629.00,
+        "description": "Elegant storage and display unit.",
+        "size": "72 x 36 x 18 inches",
+        "color": "Teak Finish",
+        "type":"Teak"
+      }
+    ]
+  },
+  {
+    "category_title": "Armchairs",
+    "image": "images/Rectangle 277 q.png",
+    "alt": "Armchairs",
+    "products": [
+      {
+        "id": "product-190",
+        "product_name": "Florence Accent Chair",
+        "subtitle": "Aara Craft By Urban Ladder",
+        "image": "images/products/armchair1.jpg",
+        "images":["images/products/armchair1.jpg","images/products/armchair11.jpg","images/products/armchair12.jpg","images/products/armchair13.jpg"],
+        "price": 7229.00,
+        "old_price": 9279.00,
+        "description": "Timeless style for reading or relaxing.",
+        "size": "73.6 cm H x 63.5 cm W x 60.9 cm L",
+        "color": "Chintz Floral",
+        "type":"Teak"
+      }
+    ]
+  }
+]
