@@ -1,0 +1,303 @@
+/* Hero Section */
+.hero-section {
+  background: url("images/banner.png") no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  margin-top: 152px;
+}
+.hero_container {
+  width: 420px;
+  margin-bottom: 290px;
+}
+.hero-text {
+  background-color: #fff3e0;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.btn-buy {
+  background-color: #b98a30;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 10px 30px;
+}
+
+.btn-buy:hover {
+  background-color: #a07525;
+}
+
+/* Section Titles */
+.section-title {
+  color: #be9534c7;
+  font-weight: 700;
+  text-align: center;
+}
+
+.section-subtitle {
+  color: #888;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Category Grid */
+.category-box {
+  background-color: #fff3e0;
+  padding: 25px 15px;
+  transition: transform 0.3s ease;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.category-box:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.category-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.category-title {
+  font-weight: 600;
+  color: #b98a30;
+  margin-top: 10px;
+  font-size: 20px;
+}
+.explore_all a {
+  color: gold;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.explore_all a:hover {
+  border-bottom: 1px solid gold;
+}
+/* Product Cards */
+.best_seller .product-card,
+.new_arrival .product-card,
+#product-list .product-card {
+  background-color: #fff7ec;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 0;
+  transition: all 0.3s ease;
+  padding: 20px 40px;
+}
+
+.product-card:hover {
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  position: relative;
+}
+
+.product-image img {
+  width: 100%;
+  height: 240px;
+  display: block;
+}
+
+.discount-badge,
+.badge-new {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  color: white;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.discount-badge {
+  background-color: #ff5c5c;
+}
+
+.badge-new {
+  background-color: #00c4a6;
+}
+
+.product-info,
+.product-details {
+  background-color: #f1f1f1;
+  padding: 15px;
+}
+
+.product-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.product-sub,
+.product-desc {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.price,
+.product-price {
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
+}
+
+.price-old {
+  text-decoration: line-through;
+  color: #aaa;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+/* Testimonials */
+.testimonial-section {
+  background-color: #fff;
+  padding: 40px 0;
+}
+
+.testimonial-card {
+  background-color: #fff3e6;
+  padding: 30px;
+  height: 100%;
+  text-align: center;
+}
+
+.testimonial-card img {
+  height: 300px;
+  object-fit: cover;
+
+  margin-bottom: 20px;
+}
+
+.testimonial-text {
+  font-size: 15px;
+  margin-bottom: 20px;
+  color: black;
+  font-weight: 600;
+}
+
+.testimonial-stars i {
+  color: #f8b400;
+  margin-right: 5px;
+}
+
+.testimonial-view {
+  color: #888;
+  font-size: 13px;
+}
+
+.testimonial-name {
+  color: black;
+  font-weight: 600;
+}
+
+.testimonial-location {
+  font-size: 14px;
+  color: black;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 991.98px) {
+  .hero-text {
+    padding: 20px;
+  }
+
+  .testimonial-card img {
+    height: 250px;
+  }
+
+  .product-title {
+    font-size: 16px;
+  }
+
+  .category-img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hero-section {
+    height: auto;
+    padding: 50px 0;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .testimonial-card img {
+    height: 200px;
+  }
+
+  .subscribe-input {
+    width: 100%;
+    border-radius: 8px 0 0 8px;
+  }
+
+  .subscribe-btn {
+    width: auto;
+  }
+
+  .nav-icons,
+  .signup-btn {
+    margin-top: 10px;
+  }
+
+  .footer .d-flex {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-text h2 {
+    font-size: 24px;
+  }
+
+  .product-title {
+    font-size: 15px;
+  }
+
+  .testimonial-text {
+    font-size: 14px;
+  }
+
+  .testimonial-card img {
+    height: 180px;
+  }
+
+  .category-img {
+    height: 150px;
+  }
+}
+
+#authButtons .btn,
+#userSection .btn {
+  background-color: white;
+  color: #b98a30;
+  font-weight: bold;
+}
+#accountModal .btn {
+  color: #b98a30;
+  background-color: #fff;
+  border: 1px solid #b98a30;
+  font-weight: 600;
+}
+#accountModal .btn:hover {
+  color: #fff;
+  background-color: #b98a30;
+}

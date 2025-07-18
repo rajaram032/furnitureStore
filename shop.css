@@ -1,0 +1,89 @@
+.banner {
+  margin-top: 140px;
+}
+.shop_card {
+  padding: 25px 0;
+}
+
+.filter-bar {
+  background-color: #fdf6ef;
+  padding: 15px 20px;
+}
+
+.filter-bar .form-select,
+.filter-bar .form-control {
+  max-width: 120px;
+}
+
+.contact-box {
+  background-color: #fef3e7;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.info-box {
+  background-color: #fdf1df;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.info-icon {
+  font-size: 20px;
+  color: black;
+  margin-right: 10px;
+}
+
+.filter-bar .form-control {
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+.btn-submit {
+  background-color: #a77c20;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+}
+
+.btn-submit:hover {
+  background-color: #8c6519;
+}
+
+.filter-bar .form-label {
+  font-weight: 500;
+}
+
+.feature-icon {
+  font-size: 2rem;
+  color: #222;
+}
+
+.feature-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.feature-subtext {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.feature-box {
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .feature-box {
+    text-align: left;
+  }
+}
+
+.pagination .page-link {
+  border-radius: 8px;
+}
+
+.pagination .active .page-link {
+  background-color: #b48c4c;
+  color: white;
+  border: none;
+}

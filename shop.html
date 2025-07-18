@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wooden Dreams|Contact</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- css files -->
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="shop.css">
+    <link rel="stylesheet" href="productcard_hover.css">
+    <script src="cart&wishlist_count.js"></script>
+    <script src="newarrival&bestsellers.js" defer></script>
+    <style>
+.modal.modal-left .modal-dialog {
+  margin: 0;
+  margin-left: 0;
+  transform: none;
+  max-width: 350px; /* Optional: Set width if needed */
+}
+
+.modal.modal-left .modal-content {
+  height: 100vh;
+  border-radius: 0;
+}
+
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            getBestSellersDataFromApi();
+            getNewArrivalsDataFromApi();
+            highlightWishlistedItems();
+            renderRecentlyViewed();
+            updateWishlistCount();
+            updateCartBadge();
+            registration();
+            loginForm();
+            updateNavbar();
+            getAddToCartValues();
+        });
+    </script>
+</head>
+
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg top-bar">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center text-white fw-bold" href="#">
+                <img src="images/Group 206.png" alt="Logo" width="80" class="me-2" />
+                Wooden Dreams
+            </a>
+
+            <!-- Toggle button for mobile -->
+            <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar content -->
+            <div class="collapse navbar-collapse justify-content-between" id="mainNavbar">
+                <!-- Links -->
+                <ul class="navbar-nav mx-auto text-center">
+                    <li class="nav-item"><a class="nav-link text-white " href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link text-white " href="categories.html">Categories</a></li>
+                    <li class="nav-item"><a class="nav-link text-white active" href="#">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link text-white " href="contact.html">Contact</a></li>
+                </ul>
+
+                <!-- Icons & Sign Up -->
+                 <div
+                    class="d-flex align-items-center justify-content-center flex-column flex-lg-row mt-3 mt-lg-0 text-center">
+                    <div class="nav-icons d-flex justify-content-between align-items-center">
+
+                        <!-- Search Icon with Collapsible Input -->
+                        <div class="me-3 text-white text-center position-relative over" id="searchContainer">
+                            <!-- Toggle Button -->
+                            <div data-bs-toggle="collapse" data-bs-target="#searchInput" role="button"
+                                aria-expanded="false" aria-controls="searchInput">
+                                <i class="fas fa-search"></i>
+                                <p class="mb-0">Search</p>
+                            </div>
+
+                            <!-- Collapsible Input Box -->
+
+                            <div class="collapse mt-2 position-absolute start-0" id="searchInput"
+                                style="min-width: 200px; z-index: 1000;">
+                                <input type="search" class="form-control" id="navbarSearchBox"
+                                    placeholder="Type to search...">
+                                <div id="searchResults" class="bg-white border mt-1 rounded shadow p-2"
+                                    style="max-height: 200px; overflow-y: auto;"></div>
+                            </div>
+
+                        </div>
+
+
+                        <!-- Cart Icon -->
+                        <a href="cart.html" class="position-relative me-3 text-white text-center text-decoration-none">
+                            <i class="fas fa-shopping-cart"></i>
+                            <p class="mb-0">Cart</p>
+                            <span id="cart-badge"
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-white"
+                                style="color: #b98a30;">0</span>
+                        </a>
+
+                        <!-- Wishlist Icon -->
+                        <a href="whishlist.html"
+                            class="position-relative me-3 text-white text-center text-decoration-none">
+                            <i class="fas fa-heart"></i>
+                            <p class="mb-0">Liked</p>
+                            <span id="whishlist-badge"
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-white"
+                                style="color: #b98a30;">0</span>
+                        </a>
+
+                        <!-- Sign In Button -->
+                        <!-- Before login -->
+                        <div id="authButtons">
+                            <button class="btn" data-bs-toggle="modal" data-bs-target="#registerModal">Sign
+                                Up</button>
+                            <button class="btn" data-bs-toggle="modal" data-bs-target="#loginModal">Sign In</button>
+
+                        </div>
+
+                        <!-- After login -->
+                        <!-- Vertical stacked version -->
+                        <div id="userSection" class="d-none text-end">
+                            <div id="greetUser" class="fw-bold text-white mb-1"></div>
+                            <button class="btn  mb-4" data-bs-toggle="modal"
+                                data-bs-target="#accountModal">Account</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- banner -->
+    <div class="position-relative text-center banner">
+
+        <img src="images/Rectangle 283.png" alt="Contact" class="img-fluid w-100"
+            style="height: 300px; object-fit: cover;">
+
+
+        <div class="position-absolute top-50 start-50 translate-middle text-black">
+            <h2 class="fw-medium">Shop</h2>
+            <p class="text-black">
+                Home <i class="fa-solid fa-angle-right mx-1"></i>
+                <span class="text-muted">Shop</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Product Filter Bar -->
+    <div class="container-fluid filter-bar">
+        <div class="container p-3">
+            <div class="row align-items-center justify-content-between ">
+                <!-- Left Section -->
+                <div class="col-md-6 d-flex align-items-center  mb-md-0" >
+                    <i class="fas fa-sliders-h me-2" ></i>
+                    <span class="me-3" data-bs-toggle="modal" data-bs-target="#filterModal" style="cursor: pointer;">Filter</span>
+                    <div class="vr mx-3 d-none d-md-block"></div>
+                    <p class="mt-3">Showing <span id="productsCount"> </span> results</p>
+                </div>
+
+                <!-- Right Section -->
+                <div class="col-md-6 d-flex align-items-center justify-content-md-end  gap-2 flex-wrap">
+
+                    <span>Sort by</span>
+                    <select id="sortOptions" class="form-select" >
+                        <option value="default" selected>Default</option>
+                        <option value="asc">Price (Low to High)</option>
+                        <option value="desc">Price (High to Low)</option>
+                    </select>
+
+                    <button id="resetFilters" class="btn  btn-sm text-white" style="background-color: #b98a30;">
+                        Reset Filters
+                    </button>
+                </div>
+                <!-- Result count per section -->
+                <span id="newResultCount"></span>
+                <span id="bestResultCount"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Best Sellers -->
+    <section class="py-5 bg-white text-center best_seller">
+        <div class="container">
+            <h3 class="section-title">Best Sellers</h3>
+            <p class="text-muted mb-4">Our Most Loved Pieces</p>
+
+            <div class="row g-4 justify-content-center" id="bestSellersContainer">
+                <!-- JS will render cards here -->
+            </div>
+
+            <div class="d-flex justify-content-end explore_all mt-4">
+                <a href="categories.html">EXPLORE ALL</a>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="container-fluid py-5 filter-bar bg-light">
+        <div class="row g-4 px-3 px-md-5 text-center text-md-start">
+
+            <div
+                class="col-12 col-sm-6 col-md-3 d-flex align-items-start justify-content-center justify-content-md-start justify-content-sm-center">
+                <img src="images/trophy 1.png" alt="High Quality" class="me-3" style="width: 40px; height: auto;">
+                <div>
+                    <div class="feature-title fw-bold fs-6">High Quality</div>
+                    <div class="feature-subtext text-muted small">Crafted from top materials</div>
+                </div>
+            </div>
+
+            <div
+                class="col-12 col-sm-6 col-md-3 d-flex align-items-start justify-content-center justify-content-md-start justify-content-sm-between">
+                <img src="images/guarantee.png" alt="Warranty Protection" class="me-3"
+                    style="width: 40px; height: auto;">
+                <div>
+                    <div class="feature-title fw-bold fs-6">Warranty Protection</div>
+                    <div class="feature-subtext text-muted small">Over 2 years</div>
+                </div>
+            </div>
+
+            <div
+                class="col-12 col-sm-6 col-md-3 d-flex align-items-start justify-content-center justify-content-md-start justify-content-sm-between">
+                <img src="images/Vectorm.png" alt="Free Shipping" class="me-3" style="width: 40px; height: auto;">
+                <div>
+                    <div class="feature-title fw-bold fs-6">Free Shipping</div>
+                    <div class="feature-subtext text-muted small">Orders over $150</div>
+                </div>
+            </div>
+
+            <div
+                class="col-12 col-sm-6 col-md-3 d-flex align-items-start justify-content-center justify-content-md-start justify-content-sm-between">
+                <img src="images/Vector  k.png" alt="24/7 Support" class="me-3" style="width: 40px; height: auto;">
+                <div>
+                    <div class="feature-title fw-bold fs-6">24 / 7 Support</div>
+                    <div class="feature-subtext text-muted small">Dedicated support</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- New Arrivals -->
+    <section class="py-5 text-center bg-white new_arrival">
+        <div class="container">
+            <h2 class="section-title mb-2">New Arrivals</h2>
+            <p class="section-subtitle mb-4">Discover What's New</p>
+
+            <div class="row g-4 justify-content-center" id="newArrivalsContainer">
+                <!-- JS will inject product cards here -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Recently viwed -->
+
+    <section class="py-5 bg-white text-center">
+        <div class="container-fluid px-5">
+            <h3 class="section-title">Recently viewed</h3>
+
+
+            <!-- Dynamic Recently Viewed Container -->
+            <div class="row  justify-content-center p-4 mx-3" style="background-color: #fff7ec;"
+                id="recentlyViewedContainer">
+                <!-- JS will inject cards here -->
+            </div>
+
+            <!-- Pagination -->
+            <nav class="mt-5 d-flex justify-content-center">
+                <ul class="pagination gap-3 p-2" id="recentPagination"></ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Product added to cart toast -->
+    <div class="position-fixed end-0 p-3" style="z-index: 9999; top: 80px; max-width: 300px; width: 100%;">
+        <div id="cartToast" class="toast align-items-center border-0 w-100" role="alert" aria-live="assertive"
+            aria-atomic="true" style="color: white; background-color: #b84605;">
+            <div class="d-flex">
+                <div class="toast-body small">
+                    ✅ Product added to cart!
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- login modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-body">
+
+                    <!-- Close Button -->
+                    <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+
+                    <div class="container-fluid">
+                        <div class="row">
+
+                            <!-- Left Column -->
+                            <div class="col-12 col-md-6 d-flex flex-column align-items-center    mb-4 mb-md-0">
+                                <img src="images/Group 206.png" width="60" alt="Logo" class="mb-2 "
+                                    style="margin-right: 85px;">
+                                <h2 class="brand-text text-start align-self-start">Wooden Dreams</h2>
+                                <p class="welcome-text text-end">Welcome’s You !</p>
+                                <img src="images/Cloud sofa three seater + ottoman_2 2.png" alt="Couch"
+                                    class="couch-img ">
+                            </div>
+
+                            <!-- Right Column -->
+                            <div class="col-12 col-md-6">
+                                <form class="login-box" id="loginForm">
+                                    <h4 class="text-muted mb-4">Log In</h4>
+
+                                    <div class="mt-5">
+                                        <input type="email" id="loginEmail" class="form-control p-3 custom-input"
+                                            placeholder="Enter your Email Address" required>
+                                    </div>
+                                    <div class="mt-3">
+                                        <input type="password" id="loginPassword" class="form-control p-3 custom-input"
+                                            placeholder="Enter Password" required>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between align-items-center mt-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                                            <label class="form-check-label" for="rememberMe">Remember Me</label>
+                                        </div>
+                                        <button type="submit" class="sign-in-link ">Sign In</button>
+                                        |
+                                        <span class="sign-in-link" data-bs-toggle="modal"
+                                            data-bs-target="#registerModal">Sign Up</span>
+                                    </div>
+                                </form>
+
+                                <!-- Optional login message -->
+                                <div id="loginMessage" class="alert mt-3 d-none" role="alert"></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Register modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-body position-relative">
+
+                    <!-- Close Button -->
+                    <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <!-- Left Column -->
+                            <div class="col-12 col-md-6 d-flex flex-column align-items-center mb-4 mb-md-0">
+                                <img src="images/Group 206.png" width="60" alt="Logo" class="mb-2"
+                                    style="margin-right: 85px;">
+                                <h2 class="brand-text text-start align-self-start">Wooden Dreams</h2>
+                                <p class="welcome-text text-end">Welcome’s You !</p>
+                                <img src="images/Cloud sofa three seater + ottoman_2 2.png" alt="Couch"
+                                    class="couch-img">
+                            </div>
+
+                            <!-- Right Column -->
+                            <div class="col-12 col-md-6">
+                                <form class="login-box" id="registerForm">
+                                    <h4 class="text-muted mb-4">Sign Up</h4>
+
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control p-3 custom-input" id="regName"
+                                            placeholder="Enter your Name" required pattern="^[a-zA-Z ]{2,}$"
+                                            title="Please enter a valid name (only letters).">
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="tel" class="form-control p-3 custom-input" id="regPhone"
+                                            placeholder="Enter your Mobile Number" required pattern="[0-9]{10}"
+                                            maxlength="10" title="Enter 10-digit mobile number.">
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="email" class="form-control p-3 custom-input" id="regEmail"
+                                            placeholder="Enter your Email Address" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="password" class="form-control p-3 custom-input" id="regPassword"
+                                            placeholder="Enter Password" required minlength="6"
+                                            title="Password must be at least 6 characters.">
+                                    </div>
+
+                                    <div class="d-flex justify-content-between align-items-center mt-3">
+                                        <button type="submit" class="sign-in-link text-decoration-none ">
+                                            Sign Up
+                                        </button>
+                                    </div>
+                                </form>
+
+                                <!-- Success Message -->
+                                <div id="registerSuccess" class="alert alert-success mt-3 d-none" role="alert">
+                                    Registration successful!
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Account Modal -->
+    <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-white" style="background-color: #b98a30;">
+                    <h5 class="modal-title">Your Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" "></button>
+                </div>
+                <div class=" modal-body text-start" style="background-color: #e6ae47d2;;">
+                        <p id="accountDetails"></p>
+
+                        <div class="mt-3">
+                            <button class="btn  w-100 mb-2" onclick="showOrders()">Your Orders</button>
+                            <button class="btn w-100 mb-2" onclick="viewCompare()">View Compare</button>
+                            <button class="btn  w-100" onclick="logoutUser()">Sign Out</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Filter Modal -->
+    <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-sm modal-left">
+            <div class="modal-content">
+                <div class="modal-header" >
+                    <h5 class="modal-title">
+                        <i class="fas fa-filter me-2"></i> Filter
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <!-- Sort By -->
+                    <div class="mb-3 border-bottom pb-2">
+                        <label class="form-label fw-bold">Category</label>
+                        <select class="form-select" id="categoryFilter">
+                            <option value="all">All</option>
+                            <option value="Sofa">Sofa</option>
+                            <option value="Recliner">Recliner</option>
+                            <option value="Bed">Bed</option>
+                            <option value="Dining Set">Dining Set</option>
+                            <option value="Decor">Decor</option>
+                            <option value="Study Tables">Study Tables</option>
+                            <option value="Mattress">Mattress</option>
+                            <option value="Wardrobes">Wardrobes</option>
+                            <option value="Chairs">Chairs</option>
+                            <option value="Outdoor">Outdoor</option>
+                            <option value="Side Table">Side Table</option>
+                            <option value="TV Units">TV Units</option>
+                            <!-- Add more as needed -->
+                        </select>
+                    </div>
+
+
+                    <!-- Brand Filter -->
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Brand</label>
+                        <select class="form-select" id="brandFilter">
+                            <option value="all">All</option>
+                            <option value="Urban Ladder">Urban Ladder</option>
+                            <option value="Bluewud"> Bluewud</option>
+                            <option value="Art & Abode">Art & Abode</option>
+                            <option value="Little Nap Designer">Little Nap Designer</option>
+                            <option value=" Vedas"> Vedas</option>
+                            <option value="Direct Factory">Direct Factory</option>
+                            <!-- Add more brands -->
+                        </select>
+                    </div>
+
+                    <!-- Seating Capacity Filter -->
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Seating Capacity</label>
+                        <select class="form-select" id="seatingFilter">
+                            <option value="all">All</option>
+                            <option value="1">1 Seater</option>
+                            <option value="2">2 Seater</option>
+                            <option value="3">3 Seater</option>
+                            <option value="4">4+ Seater</option>
+                        </select>
+                    </div>
+                    <!-- Modal Footer -->
+                    <div class="modal-footer d-flex justify-content-center">
+
+                        <!-- <button type="button" class="btn text-white" data-bs-dismiss="modal" id="applyFilters"
+                            style="background-color: #b98a30;">Apply
+                            Filters</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row ">
+                <!-- Logo & Info -->
+                <div class="col-lg-5 col-md-6 col-sm-12 mb-3">
+                    <div class="d-flex align-items-center mb-2">
+                        <img src="images/Group 206.png" width="70" class="me-2" alt="Logo" />
+                        <h5 class="fw-bold mb-0">Wooden Dreams</h5>
+                    </div>
+                    <p class="paragraph mt-3">
+                        "At Wooden Dreams, we craft furniture that brings warmth and comfort to your home. Our wooden
+                        creations are
+                        designed to inspire sweet dreams and peaceful nights. Every piece is carefully crafted to
+                        provide a haven of
+                        relaxation and tranquility. Sleep tight, dream big with Wooden Dreams."
+                    </p>
+                    <div class="mt-4 ms-5 address">
+                        <p class="d-flex align-items-start">
+                            <i class="fas fa-location-arrow me-2 mt-1"></i> Head Office 13/5, Post office opposite,
+                            <br>Chennai.876543
+                        </p>
+                        <p class="d-flex align-items-start">
+                            <i class="fas fa-globe me-2 mt-1"></i> www.woodendreams.in
+                        </p>
+                        <p class="d-flex align-items-start">
+                            <i class="fas fa-envelope me-2 mt-1"></i> woodendreams@gmail.com
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div class="col-lg-1 col-md-3 col-sm-6 mb-4">
+                    <p class="fw-bold mt-4">LINKS</p>
+                    <ul class="list-unstyled">
+                        <li class="mt-4"><a href="#">Home</a></li>
+                        <li class="mt-4"><a href="#">About</a></li>
+                        <li class="mt-4"><a href="#">Categories</a></li>
+                        <li class="mt-4"><a href="#">Shop</a></li>
+                        <li class="mt-4"><a href="#">Blog</a></li>
+                        <li class="mt-4"><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Help -->
+                <div class="col-lg-2 col-md-3 col-sm-6 mb-4">
+                    <p class="fw-bold mt-4">HELP</p>
+                    <ul class="list-unstyled">
+                        <li class="mt-4"><a href="#">Payment Options</a></li>
+                        <li class="mt-4"><a href="#">Returns</a></li>
+                        <li class="mt-4"><a href="#">Privacy Policies</a></li>
+                    </ul>
+                </div>
+
+                <!-- Subscribe -->
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 d-flex flex-column flex-md-column  align-items-center 
+  align-items-md-end  justify-content-center justify-content-md-between text-center text-md-start align-items-center align-items-md-start"
+                    style="overflow-x: hidden;">
+
+                    <!-- Subscribe Section -->
+                    <div class="mt-4">
+                        <h6 class="fw-bold" style="font-size: 23px;">Subscribe</h6>
+                        <form class="d-flex flex-column flex-sm-row align-items-center">
+                            <input type="email" class="subscribe-input mb-2 mb-sm-0 me-sm-2"
+                                placeholder="Enter your email" />
+                            <button type="submit" class=" subscribe-btn">SIGN UP</button>
+                        </form>
+                    </div>
+
+                    <!-- Follow Us Section -->
+                    <div class="mt-4 d-flex flex-column align-items-center align-items-md-end text-center text-md-end">
+                        <span class="fw-bold mb-2 me-md-">Follow Us</span>
+                        <div class="social-icons d-flex flex-row gap-2 justify-content-center">
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Google"><i class="fab fa-google"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom text-center">
+                <span class="">2025 Wooden Dreams. All rights reserved</span>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

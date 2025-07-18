@@ -1,0 +1,71 @@
+[ {
+        "id": "product-001",
+        "product_name": "Emila One Seater Motorized Recliner",
+         "category": "Recliner",
+        "subtitle": "LazeOn By Urban Ladder",
+        "image": "images/products/recliner1.jpg",
+         "images": ["images/products/recliner1.jpg", "images/products/recliner11.png", "images/products/recliner12.gif", "images/products/recliner13.png"],
+        "price": 36629,
+        "old_price": 66599,
+        "description": "Next-level cosy. The Emila motorised recliner sofa takes comfort to a whole new dimension, with extra-plush armrests, headrests, and seats. The cleverly designed backrest reclines without taking up any extra space. Sink in, kick back, and cool your heels at the push of a button Fabric upholstery Please note that only the seats on the two ends recline for the 3 seater Please refer to images for dimension detailsIndoor use only.",
+        "size": "99.0 cm H x 237.0 cm W x 96.0 cm L",
+        "color": "Blue"
+      }, {
+        "id": "product-003",
+        "product_name": "Griffin One Seater Manual Recliner", "category": "Recliner",
+       "subtitle": "By Little Nap Designer",
+        "image": "images/products/recliner3.jpg",
+        "price": 18829,
+        "old_price": 53799,
+        "description": "Poised and plush. With a generously cushioned body and a classic shape, Griffin recliner is a seat treat. Covered in premium upholstery, the recliner mechanism allows you to lean almost 180 degrees back and also unfolds with a footprint, giving you maximum comfort. Add this to your living or bedroom spaces for a contemporary inviting appeal.Choose from leatherette or fabric upholstery Please refer to the images for dimension details Worry-free! We've tested our recliners for 25,000 cycles - this means you can use it for 15-20 years without a second thought. Rest assured. Our recliners have passed load-bearing capacity testing for up to 140kg, on each seat.Indoor use only",
+        "size": "100.0 cm H x 95.5 cm W x 96.0 cm L",
+        "color": "Grey"
+      }, {
+        "id": "product-020",
+        "product_name": "Inaya Multi Coloured Iron Wall Accent",
+         "category": "Decor",
+        "subtitle": "By Vedas",
+        "image": "images/products/decor1.jpeg",
+         "images": ["images/sofa1.jpg", "images/sofa2.jpg", "images/sofa3.jpg", "images/sofa4.jpg"],
+        "price": 2813,
+        "old_price": 4199,
+        "description": "This modern abstract piece a long-lasting addition to your collection, and the unique pierced and layered metal design provides texture and depth to your wall for extra visual interest. Add color and dimension to your walls with this wall sculpture. Organically inspired discs cluster to create this beautiful piece. Use along for a simple statement, or cluster in multiples for a dynamic and truly unique statement.",
+        "size": "48.1 cm H x 5.1 cm W x 48.3 cm L",
+        "color": "Multi-color"
+      },{
+        "id": "product-021",
+        "product_name": "Multi Coloured Iron Wall Accent",
+        "subtitle": "By Vedas",
+         "category": "Decor",
+        "image": "images/products/decor2.jpg",
+        "price": 4649,
+        "old_price": 7499,
+        "description": "This Metal Wall Art is perfectly proportioned to fit every aesthetic need and is designed to be sufficiently subtle depending on the position and according to the need. This framed wall art will surely fill any vacant space, giving completion and balance to the design impact of any room or space..",
+        "size": "59.8 cm H x 5.0 cm W x 60.0 cm L",
+        "color": "Multi-color"
+      }, {
+        "id": "product-060",
+        "product_name": "Tyche Engineered Wood 2 Door Wardrobe",
+         "category": "Wardrobe",
+        "subtitle": "By Direct Factory ",
+        "image": "images/products/wardrobe1.jpg",
+        "images":["images/products/bewardrobe1.jpg","images/products/wardrobe11.jpg","images/products/wardrobe12.jpg","images/products/wardrobe13.jpg"],
+        "price": 8549.00,
+        "old_price": 18999.00,
+        "description": "Plenty of space for all your clothes.",
+        "size": "181.8 cm H x 74.3 cm W x 44.6 cm L",
+        "color": "Wenge"
+      },{
+        "id": "product-070",
+        "product_name": "Eileen Wooden Sofa ",
+        "category": "Sofa",
+        "subtitle": "By Urban Ladder",
+        "image": "images/products/sofa1.png",
+        "price": 10907.00,
+        "old_price": 20199.00,
+        "description": "Stylish and comfy for your living room.",
+        "size": "80.0 cm H x 70.0 cm W x 70.0 cm L",
+        "color": "Harvest Yellow",
+        "type":"1 Seater"
+      }
+    ]

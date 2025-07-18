@@ -1,0 +1,81 @@
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Top Bar & Navbar */
+.top-bar {
+  background-color: #b98a30;
+  color: #fff;
+  padding: 25px 0;
+}
+
+.navbar-nav .nav-link.active {
+  font-weight: 600;
+
+  text-decoration: underline;
+}
+.nav-icons {
+  cursor: pointer;
+}
+.nav-icons i {
+  font-size: 1rem;
+
+  color: white;
+}
+.nav-icons p {
+  font-size: 13px;
+}
+.signup-btn {
+  background: white;
+  color: #b98a30;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all o.3s ease-in;
+}
+.signup-btn:hover {
+  border: 1px solid white;
+  background-color: #b98a30;
+  color: white;
+}
+
+/* Fix collapsing visual border glitch */
+#searchInput.collapse:not(.show) {
+  display: block !important;
+  height: 0 !important;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, height 0.3s ease;
+}
+
+#searchInput.collapse.show {
+  opacity: 1;
+  height: auto !important;
+  pointer-events: auto;
+}
+.navbar-toggler {
+  border: none;
+  background: transparent;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,1%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}

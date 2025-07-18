@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wooden Dreams | Product Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- css files -->
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="productcard_hover.css">
+
+    <script src="cart&wishlist_count.js"></script>
+    <script src="category_products.js"></script>
+    <style>
+        .product_detail {
+            margin-top: 140px;
+        }
+
+        .thumbnail-img {
+            max-width: 80px;
+            /* Limit size */
+            cursor: pointer;
+        }
+
+        @media (max-width: 576px) {
+            .thumbnail-img {
+                max-width: 60px;
+            }
+        }
+
+        .main-product-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 500px;
+            /* Adjust as needed */
+            object-fit: contain;
+            background-color: #fdf6ef;
+
+        }
+
+        .thumbnail-img.active {
+            border: 2px solid #a77c20;
+        }
+
+        #mainImageContainer {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #zoomLens {
+            position: absolute;
+            border: 1px solid #ccc;
+            width: 100px;
+            height: 100px;
+            visibility: hidden;
+            background-repeat: no-repeat;
+            background-size: 200% 200%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .contact-box {
+            background-color: #fef3e7;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .info-box {
+            background-color: #fdf1df;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .info-icon {
+            font-size: 20px;
+            color: black;
+            margin-right: 10px;
+        }
+
+        .form-control {
+            border-radius: 6px;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background-color: #a77c20;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+        }
+
+        .btn-submit:hover {
+            background-color: #8c6519;
+        }
+
+        .form-label {
+            font-weight: 500;
+        }
+
+        .tab-nav {
+            border-bottom: 2px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        .tab-nav .nav-link {
+            color: #000;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .tab-nav .nav-link.active {
+            border-bottom: 3px solid #000;
+        }
+
+        .tab-content {
+            text-align: center;
+        }
+
+        .tab-description {
+            color: #777;
+            font-size: 0.95rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .tab-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .review-icon {
+            color: #999;
+        }
+
+        @media (max-width: 576px) {
+            .tab-description {
+                padding: 0 15px;
+            }
+        }
+
+        .decription {
+            background-color: #fdf6ef;
+        }
+
+        .qty_btn .btn-cart {
+            background-color: #fdf6ef;
+            border-radius: 10px;
+            padding: 9.5px 0;
+        }
+
+        .qty_btn .btn-cart:hover {
+            color: #8c6519;
+
+        }
+
+        .qty_btn .btn-buy {
+            border-radius: 10px;
+            padding: 10px 0;
+        }
+
+        .qty_btn .btn-buy:hover {
+            background-color: white;
+            color: #8c6519;
+            border: 1px solid #8c6519;
+            ;
+        }
+
+        .decription .nav-link,
+        .decription .active {
+            border: none;
+            background-color: #fdf6ef;
+        }
+
+        .related_products .show_more button {
+            border: 1px solid #8c6519;
+            color: #8c6519;
+            padding: 7px 45px;
+            font-weight: 600;
+        }
+
+        .related_products .show_more button:hover {
+            color: white;
+            background-color: #8c6519;
+        }
+    </style>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            console.log("Script loaded and DOM ready!");
+            console.log("Found element:", document.querySelector('.product-category'));
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get("id");
+            console.log("Product ID from URL:", productId);
+            if (!productId) return;
+
+
+            // Load or initialize localStorage arrays
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+            let recent = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
+
+            fetch('categories.json')
+                .then(res => res.json())
+                .then(data => {
+                    let foundProduct = null;
+
+                    data.forEach(category => {
+                        const match = category.products.find(p => p.id == productId);
+                        if (match) {
+                            foundProduct = match;
+                            foundProduct.category_title = category.category_title;
+                        }
+                    });
+
+                    if (!foundProduct) {
+                        alert("Product not found");
+                        return;
+                    }
+
+
+                    document.querySelector(".product-category").innerHTML = foundProduct.category_title;
+                    document.querySelector(".breadcrumb-product-name").innerHTML = foundProduct.product_name;
+                    document.querySelector(".heading-product-name").innerHTML = foundProduct.product_name;
+                    document.querySelector(".price").textContent = `₹${foundProduct.price.toLocaleString()}`;
+                    document.querySelector(".price-old").textContent = `₹${foundProduct.old_price.toLocaleString()}`;
+
+                    const thumbnailContainer = document.querySelectorAll(".thumbnail-img");
+                    if (foundProduct.images && foundProduct.images.length >= thumbnailContainer.length) {
+                        thumbnailContainer.forEach((img, index) => {
+                            img.src = foundProduct.images[index];
+                            img.alt = `${foundProduct.product_name} ${index + 1}`;
+                            // On click, update main image
+                            img.addEventListener("click", () => {
+                                mainImage.src = img.src;
+                                mainImage.alt = img.alt;
+                            });
+                        })
+
+                    }
+                    document.querySelector(".product-img-main img").src = foundProduct.image;
+                    document.querySelector(".tab-image img").src = foundProduct.image;
+                    document.querySelector(".product-img-main img").alt = foundProduct.product_name;
+                    document.querySelector(".mini-describtion").textContent = foundProduct.description || "No description available.";
+                    document.querySelector(".tab-description").textContent = foundProduct.description || "No description available.";
+
+                    document.querySelector(".color").innerHTML = `
+                ${foundProduct.color ? `Color: ${foundProduct.color} color<br>` : ""}
+                ${foundProduct.type ? `Type: ${foundProduct.type} size` : ""}`;
+
+                    const categoryTitleElements = document.querySelectorAll(".product_category");
+
+                    categoryTitleElements.forEach(el => {
+                        el.innerHTML = `${foundProduct.category_title}`;
+                    });
+
+                    const dimensionsHTML = `
+                     ${foundProduct.size ? `<strong>Dimensions:</strong> ${foundProduct.size}<br>` : ""}
+                     ${foundProduct.color ? `<strong>Color:</strong> ${foundProduct.color}<br>` : ""}
+                     ${foundProduct.type ? `<strong>Type:</strong> ${foundProduct.type} size` : ""}`;
+                    document.querySelector(".dimensions").innerHTML = dimensionsHTML;
+
+
+                    // Optional: Update breadcrumbs
+                    const breadcrumbs = document.querySelector(".container.py-4 p");
+                    if (breadcrumbs) {
+                        breadcrumbs.innerHTML = `
+                    Home <i class="fa-solid fa-angle-right mx-1"></i>
+                    <span class="text-muted">Shop</span>
+                    <i class="fa-solid fa-angle-right mx-1"></i>
+                    <span class="text-muted">${foundProduct.product_name}</span>
+                `;
+                    }
+
+                    // Add to Cart Button
+                    const addToCartBtn = document.querySelector(".btn-cart");
+                    if (addToCartBtn) {
+                        addToCartBtn.addEventListener("click", () => {
+                            addToCart(
+                                foundProduct.id,
+                                foundProduct.product_name,
+                                foundProduct.image,
+                                foundProduct.price
+                            );
+                        });
+                    }
+
+                    //add rating
+                    const userRatings = JSON.parse(localStorage.getItem("userRatings")) || {};
+                    const stars = document.querySelectorAll(".rate-star");
+                    let userRating = userRatings[foundProduct.id] || 0;
+                    // Highlight previously saved rating if any
+                    if (userRating > 0) {
+                        highlightStars(userRating);
+                        document.getElementById("userRatingText").textContent =
+                            `You rated this ${userRating} star${userRating > 1 ? 's' : ''}`;
+                    }
+
+                    stars.forEach((star, idx) => {
+                        star.addEventListener("mouseover", () => highlightStars(idx + 1));
+                        star.addEventListener("mouseout", () => highlightStars(userRating));
+                        star.addEventListener("click", () => {
+                            userRating = idx + 1;
+                            highlightStars(userRating);
+                            document.getElementById("userRatingText").textContent =
+                                `You rated this ${userRating} star${userRating > 1 ? 's' : ''}`;
+
+                            // Save to object and persist to localStorage
+                            userRatings[foundProduct.id] = userRating;
+                            localStorage.setItem("userRatings", JSON.stringify(userRatings));
+                        });
+                    });
+
+                    function highlightStars(count) {
+                        stars.forEach((star, i) => {
+                            const icon = star.querySelector("i");
+                            icon.className = i < count ? "fas fa-star text-warning" : "far fa-star";
+                        });
+                    }
+                    //recenttly view product send to localstorage
+
+                    if (foundProduct) {
+                        addToRecentlyViewed(foundProduct);
+                        console.log("Recently viewed added:", foundProduct);
+                    }
+
+                    //render related product
+
+                    const relatedCategory = data.find(category => category.category_title === foundProduct.category_title);
+
+                    if (relatedCategory) {
+                        // Filter out the current product
+                        const relatedProducts = relatedCategory.products.filter(p => p.id != productId).slice(0, 4); // Show up to 4
+
+                        const container = document.getElementById("relatedProductsContainer");
+
+                        if (container && relatedProducts.length > 0) {
+                            relatedProducts.forEach(product => {
+
+                                const div = document.createElement("div");
+
+                                const discount = product.old_price
+                                    ? Math.round(
+                                        ((product.old_price - product.price) / product.old_price) * 100
+                                    )
+                                    : 0;
+                                div.className = "col-md-4 col-lg-3 col-sm-6";
+
+                                div.innerHTML = `
+               
+                 
+                    
+    <div class="product-card">
+      <div class="card-container">
+        <div class="product-image">
+          <img src="${product.image}" class="img-fluid" alt="${product.product_name
+                                    }">
+          <span class="discount-badge">${discount}%</span>
+        </div>
+        <div class="product-details">
+          <div class="product-title">${product.product_name}</div>
+          <div class="product-sub">${product.subtitle}</div>
+          <div class="price">₹${product.price.toLocaleString()}<span class="price-old">₹${product.old_price
+                                    }</span></div>
+        </div>
+      </div>
+      <div class="product-actions d-flex flex-column align-items-center">
+        <button class="btn-add-cart"
+          data-id="${product.id}"
+          data-name="${product.product_name.replace(/"/g, "&quot;")}"
+          data-image="${product.image}"
+          data-price="${product.price}">
+          Add to Cart
+        </button>
+        <div class="icon-actions">
+          <a href="#" class="action-link btn-add-compare" data-id="${product.id}">
+                <i class="fa-solid fa-code-compare"></i><span>Compare</span>
+              </a>
+          <a href="product_detail.html?id=${product.id}" class="action-link">
+            <img src="images/Group.png" alt=""><span>Quick View</span>
+          </a>
+          <a href="#" class="action-link wishlist-icon " data-id="${product.id
+                                    }">
+  <i class="fas fa-heart me-2"></i><span>Like</span>
+</a>
+        </div>
+      </div>
+    </div>
+ 
+
+            `;
+
+                                container.appendChild(div);
+                            });
+                        } else {
+                            container.innerHTML = "<p>No related products found.</p>";
+                        }
+                    }
+                })
+
+                //error
+                .catch(err => {
+                    console.error("Failed to load product", err);
+
+                });
+
+
+            /* Thumbnail image load in main image */
+            document.querySelectorAll('.thumbnail-img').forEach(thumbnail => {
+                thumbnail.addEventListener('click', function () {
+                    document.querySelectorAll('.thumbnail-img').forEach(img => img.classList.remove('active'));
+                    this.classList.add('active');
+                    document.querySelector('.product-img-main img').src = this.src;
+                    document.querySelector('.tab-image img').src = this.src; // Optional: also update tab image
+                });
+            });
+            updateWishlistCount();
+            updateCartBadge();
+            registration();
+            loginForm();
+            updateNavbar();
+            highlightWishlistedItems();
+            getAddToCartValues();
+
+        });
+
+        //addtocart function
+        function addToCart(id, name, image, price) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            const product = {
+                id,
+                name,
+                price: price * productQty,
+                unitPrice: price,
+                image,
+                quantity: productQty,
+            };
+
+            const existingItem = cart.find((item) => item.id === product.id);
+            if (existingItem) {
+                existingItem.quantity += productQty;
+                existingItem.price = existingItem.quantity * existingItem.unitPrice;
+            } else {
+                cart.push(product);
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartBadge();
+            showCartToast(); // Optional toast
+            productQty = 1;
+            updateQtyDisplay();
+        }
+
+        let productQty = 1;
+
+        function updateQtyDisplay() {
+            document.getElementById("product-qty").textContent = productQty;
+        }
+
+        function increaseQuantity() {
+            productQty++;
+            updateQtyDisplay();
+        }
+
+        function decreaseQuantity() {
+            if (productQty > 1) {
+                productQty--;
+                updateQtyDisplay();
+            }
+        }
+        //recenttly view product set to localstorage
+        function addToRecentlyViewed(product) {
+            let recentlyViewed = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
+
+            // Remove if already exists
+            recentlyViewed = recentlyViewed.filter(p => p.id !== product.id);
+
+            // Add to front
+            recentlyViewed.unshift(product);
+
+            // Keep max 8 items
+            recentlyViewed = recentlyViewed.slice(0, 8);
+
+            localStorage.setItem("recentlyViewed", JSON.stringify(recentlyViewed));
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const mainImage = document.getElementById("mainImage");
+            const zoomLens = document.getElementById("zoomLens");
+            const container = document.getElementById("mainImageContainer");
+
+            if (mainImage && zoomLens && container) {
+                mainImage.addEventListener("mousemove", moveLens);
+                mainImage.addEventListener("mouseenter", showLens);
+                mainImage.addEventListener("mouseleave", hideLens);
+
+                function showLens() {
+                    zoomLens.style.visibility = "visible";
+                    zoomLens.style.backgroundImage = `url('${mainImage.src}')`;
+                    zoomLens.style.backgroundSize = `${mainImage.width * 3}px ${mainImage.height * 3}px`;
+                }
+
+                function hideLens() {
+                    zoomLens.style.visibility = "hidden";
+                }
+
+                function moveLens(e) {
+                    const rect = mainImage.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const lensWidth = zoomLens.offsetWidth;
+                    const lensHeight = zoomLens.offsetHeight;
+
+                    let lensX = x - lensWidth / 3;
+                    let lensY = y - lensHeight / 3;
+
+                    lensX = Math.max(0, Math.min(lensX, rect.width - lensWidth));
+                    lensY = Math.max(0, Math.min(lensY, rect.height - lensHeight));
+
+                    zoomLens.style.left = lensX + "px";
+                    zoomLens.style.top = lensY + "px";
+
+                    const bgX = (x / rect.width) * 100;
+                    const bgY = (y / rect.height) * 100;
+
+                    zoomLens.style.backgroundPosition = `${bgX}% ${bgY}%`;
+                }
+            }
+
+        });
+
+
+
+    </script>
+</head>
+
+
+<body>
+    <!-- Header -->
+
+    <nav class="navbar navbar-expand-lg top-bar">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center text-white fw-bold" href="#">
+                <img src="images/Group 206.png" alt="Logo" width="80" class="me-2" />
+                Wooden Dreams
+            </a>
+
+            <!-- Toggle button for mobile -->
+            <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar content -->
+            <div class="collapse navbar-collapse justify-content-between" id="mainNavbar">
+                <!-- Links -->
+                <ul class="navbar-nav mx-auto text-center">
+                    <li class="nav-item"><a class="nav-link text-white " href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link text-white " href="categories.html">Categories</a></li>
+                    <li class="nav-item"><a class="nav-link text-white active" href="shop.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link text-white " href="contact.html">Contact</a></li>
+                </ul>
+
+                <!-- Icons & Sign Up -->
+                <div
+                    class="d-flex align-items-center justify-content-center flex-column flex-lg-row mt-3 mt-lg-0 text-center">
+                    <div class="nav-icons d-flex justify-content-between align-items-center">
+
+                        <!-- Search Icon with Collapsible Input -->
+                        <div class="me-3 text-white text-center position-relative over" id="searchContainer">
+                            <!-- Toggle Button -->
+                            <div data-bs-toggle="collapse" data-bs-target="#searchInput" role="button"
+                                aria-expanded="false" aria-controls="searchInput">
+                                <i class="fas fa-search"></i>
+                                <p class="mb-0">Search</p>
+                            </div>
+
+                            <!-- Collapsible Input Box -->
+
+                            <div class="collapse mt-2 position-absolute start-0" id="searchInput"
+                                style="min-width: 200px; z-index: 1000;">
+                                <input type="search" class="form-control" id="navbarSearchBox"
+                                    placeholder="Type to search...">
+                                <div id="searchResults" class="bg-white border mt-1 rounded shadow p-2"
+                                    style="max-height: 200px; overflow-y: auto;"></div>
+                            </div>
+
+                        </div>
+
+
+                        <!-- Cart Icon -->
+                        <a href="cart.html" class="position-relative me-3 text-white text-center text-decoration-none">
+                            <i class="fas fa-shopping-cart"></i>
+                            <p class="mb-0">Cart</p>
+                            <span id="cart-badge"
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-white"
+                                style="color: #b98a30;">0</span>
+                        </a>
+
+                        <!-- Wishlist Icon -->
+                        <a href="whishlist.html"
+                            class="position-relative me-3 text-white text-center text-decoration-none">
+                            <i class="fas fa-heart"></i>
+                            <p class="mb-0">Liked</p>
+                            <span id="whishlist-badge"
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-white"
+                                style="color: #b98a30;">0</span>
+                        </a>
+
+                        <!-- Sign In Button -->
+                        <!-- Before login -->
+                        <div id="authButtons">
+                            <button class="btn" data-bs-toggle="modal" data-bs-target="#registerModal">Sign
+                                Up</button>
+                            <button class="btn" data-bs-toggle="modal" data-bs-target="#loginModal">Sign In</button>
+
+                        </div>
+
+                        <!-- After login -->
+                        <!-- Vertical stacked version -->
+                        <div id="userSection" class="d-none text-end">
+                            <div id="greetUser" class="fw-bold text-white mb-1"></div>
+                            <button class="btn  mb-4" data-bs-toggle="modal"
+                                data-bs-target="#accountModal">Account</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section style="background-color: #fff7ec;" class="product_detail">
+        <div class="container py-4">
+
+            <div class="text-muted">Home <i class="fa-solid fa-angle-right mx-1"></i>
+                <span class="text-muted">Shop</span>
+                <i class="fa-solid fa-angle-right mx-1"></i>
+                <span class="text-muted product-category"></span>
+                <i class="fa-solid fa-angle-right mx-1"></i>
+                <span class="text-black breadcrumb-product-name">Asgaard sofa</span>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Product Detail -->
+    <div class="container py-5">
+        <div class="row g-4">
+            <!-- Image Thumbnails (stacked on top for mobile) -->
+            <div class="col-12 col-sm-2 order-2 order-sm-1 d-flex flex-sm-column flex-row gap-2">
+                <img src="" class="thumbnail-img img-fluid p-1" id="thumbnail1" style="background-color: #fdf6ef;" />
+                <img src="" class="thumbnail-img img-fluid p-1" id="thumbnail2" style="background-color: #fdf6ef;" />
+                <img src="" class="thumbnail-img img-fluid p-1" id="thumbnail3" style="background-color: #fdf6ef;" />
+                <img src="" class="thumbnail-img img-fluid p-1" id="thumbnail4" style="background-color: #fdf6ef;" />
+            </div>
+            <!-- Main Image -->
+            <div class="col-12 col-sm- col-md-5 order-1 order-sm-2">
+                <div class="product-img-main overflow-hidden position-relative" id="mainImageContainer"
+                    style=" overflow: hidden;">
+                    <img src="" class="img-fluid p-2 main-product-image zoom-img" id="mainImage" alt="Main Product"
+                        style="background-color: #fdf6ef;" />
+                    <div id="zoomLens"></div>
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="col-12 col-md-5 order-3">
+                <h2 class="heading-product-name"></h2>
+
+                <div>
+                    <span class="price text-muted">₹</span>
+                    <span class="price-old">₹</span>
+                </div>
+
+                <!-- Stars -->
+                <div id="starRating" class="mb-3">
+                    <span class="rate-star" data-value="1"><i class="far fa-star"></i></span>
+                    <span class="rate-star" data-value="2"><i class="far fa-star"></i></span>
+                    <span class="rate-star" data-value="3"><i class="far fa-star"></i></span>
+                    <span class="rate-star" data-value="4"><i class="far fa-star"></i></span>
+                    <span class="rate-star" data-value="5"><i class="far fa-star"></i></span>
+                    <span id="userRatingText" class="ms-2 text-muted">Rate this product</span>
+                </div>
+
+                <p class="text-muted mini-describtion"></p>
+
+                <!-- Color Info -->
+                <div class="mb-4 color text-muted">
+                    <!-- Colors loaded via JS -->
+                </div>
+
+                <!-- Quantity and Buttons -->
+                <div class="d-flex flex-wrap align-items-center mb-4 qty_btn gap-2">
+                    <div class="d-flex align-items-center btn btn-outline-secondary">
+                        <button class="btn btn-sm" onclick="decreaseQuantity()">-</button>
+                        <span id="product-qty" class="mx-2">1</span>
+                        <button class="btn btn-sm" onclick="increaseQuantity()">+</button>
+                    </div>
+
+                    <button class="btn btn-cart btn-outline-secondary px-4">Add To Cart</button>
+                    <button class="btn btn-buy btn-dark px-4">Buy Now</button>
+                </div>
+
+                <hr />
+                <p class="text-muted">SKU: SS001</p>
+                <p class="text-muted">Category: <span class="product_category"></span></p>
+                <p class="text-muted">Tags: <span class="product_category"></span>, Chair, Home, Shop</p>
+
+                <!-- Social Links -->
+                <div class="mt-3 text-muted">
+                    Share:
+                    <a href="#" class="text-dark ms-2"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-dark ms-3"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="text-dark ms-3"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- decription -->
+    <section class="decription">
+        <div class="container px-0">
+            <ul class="nav nav-tabs flex-wrap justify-content-center tab-nav" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active " id="desc-tab" data-bs-toggle="tab" data-bs-target="#desc"
+                        type="button" role="tab">
+                        <i class="fas fa-align-left me-2"></i>Description
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="addinfo-tab" data-bs-toggle="tab" data-bs-target="#addinfo"
+                        type="button" role="tab">
+                        <i class="fas fa-info-circle me-1"></i>Additional Information
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-muted" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
+                        type="button" role="tab">
+                        <i class="fas fa-star me-1 review-icon"></i>Reviews [5]
+                    </button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="desc" role="tabpanel" aria-labelledby="desc-tab">
+                    <p class="tab-description">
+                        <!-- decription loaded here -->
+                    </p>
+                    <div class="tab-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Sofa_Set_Design.png"
+                            alt="Sofa Set">
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="addinfo" role="tabpanel" aria-labelledby="addinfo-tab">
+                    <p class="tab-description dimensions">
+                        <!-- dimension and color loaded here -->
+                    </p>
+                </div>
+                <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                    <p class="tab-description text-muted">No Customer reviews </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Related Products -->
+    <section class="py-5 bg-white text-center related_products">
+        <div class="container">
+            <h3 class="section-title">Related Products</h3>
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center mt-2 "
+                id="relatedProductsContainer">
+
+                <!-- Product 1 -->
+
+            </div>
+            <div class="d-flex justify-content-center show_more mt-2">
+                <a href="categories.html"><button>
+                        Show More
+                    </button></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product added to cart toast -->
+    <div class="position-fixed end-0 p-3" style="z-index: 9999; top: 80px; max-width: 300px; width: 100%;">
+        <div id="cartToast" class="toast align-items-center border-0 w-100" role="alert" aria-live="assertive"
+            aria-atomic="true" style="color: white; background-color: #b84605;">
+            <div class="d-flex">
+                <div class="toast-body small">
+                    ✅ Product added to cart!
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- login modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-body">
+
+                    <!-- Close Button -->
+                    <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+
+                    <div class="container-fluid">
+                        <div class="row">
+
+                            <!-- Left Column -->
+                            <div class="col-12 col-md-6 d-flex flex-column align-items-center    mb-4 mb-md-0">
+                                <img src="images/Group 206.png" width="60" alt="Logo" class="mb-2 "
+                                    style="margin-right: 85px;">
+                                <h2 class="brand-text text-start align-self-start">Wooden Dreams</h2>
+                                <p class="welcome-text text-end">Welcome’s You !</p>
+                                <img src="images/Cloud sofa three seater + ottoman_2 2.png" alt="Couch"
+                                    class="couch-img ">
+                            </div>
+
+                            <!-- Right Column -->
+                            <div class="col-12 col-md-6">
+                                <form class="login-box" id="loginForm">
+                                    <h4 class="text-muted mb-4">Log In</h4>
+
+                                    <div class="mt-5">
+                                        <input type="email" id="loginEmail" class="form-control p-3 custom-input"
+                                            placeholder="Enter your Email Address" required>
+                                    </div>
+                                    <div class="mt-3">
+                                        <input type="password" id="loginPassword" class="form-control p-3 custom-input"
+                                            placeholder="Enter Password" required>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between align-items-center mt-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                                            <label class="form-check-label" for="rememberMe">Remember Me</label>
+                                        </div>
+                                        <button type="submit" class="sign-in-link">Sign In</button>
+                                        |
+                                        <span class="sign-in-link " data-bs-toggle="modal"
+                                            data-bs-target="#registerModal">Sign Up</span>
+                                    </div>
+                                </form>
+
+                                <!-- Optional login message -->
+                                <div id="loginMessage" class="alert mt-3 d-none" role="alert"></div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Register modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-body position-relative">
+
+                    <!-- Close Button -->
+                    <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <!-- Left Column -->
+                            <div class="col-12 col-md-6 d-flex flex-column align-items-center mb-4 mb-md-0">
+                                <img src="images/Group 206.png" width="60" alt="Logo" class="mb-2"
+                                    style="margin-right: 85px;">
+                                <h2 class="brand-text text-start align-self-start">Wooden Dreams</h2>
+                                <p class="welcome-text text-end">Welcome’s You !</p>
+                                <img src="images/Cloud sofa three seater + ottoman_2 2.png" alt="Couch"
+                                    class="couch-img">
+                            </div>
+
+                            <!-- Right Column -->
+                            <div class="col-12 col-md-6">
+                                <form class="login-box" id="registerForm">
+                                    <h4 class="text-muted mb-4">Sign Up</h4>
+
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control p-3 custom-input" id="regName"
+                                            placeholder="Enter your Name" required pattern="^[a-zA-Z ]{2,}$"
+                                            title="Please enter a valid name (only letters).">
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="tel" class="form-control p-3 custom-input" id="regPhone"
+                                            placeholder="Enter your Mobile Number" required pattern="[0-9]{10}"
+                                            maxlength="10" title="Enter 10-digit mobile number.">
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="email" class="form-control p-3 custom-input" id="regEmail"
+                                            placeholder="Enter your Email Address" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="password" class="form-control p-3 custom-input" id="regPassword"
+                                            placeholder="Enter Password" required minlength="6"
+                                            title="Password must be at least 6 characters.">
+                                    </div>
+
+                                    <div class="d-flex justify-content-between align-items-center mt-3">
+                                        <button type="submit" class="sign-in-link text-decoration-none ">
+                                            Sign Up
+                                        </button>
+                                    </div>
+                                </form>
+
+                                <!-- Success Message -->
+                                <div id="registerSuccess" class="alert alert-success mt-3 d-none" role="alert">
+                                    Registration successful!
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Account Modal -->
+    <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-white" style="background-color: #b98a30;">
+                    <h5 class="modal-title">Your Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" "></button>
+                </div>
+                <div class=" modal-body text-start" style="background-color: #e6ae47d2;;">
+                        <p id="accountDetails"></p>
+
+                        <div class="mt-3">
+                            <button class="btn  w-100 mb-2" onclick="showOrders()">Your Orders</button>
+                            <button class="btn w-100 mb-2" onclick="viewCompare()">View Compare</button>
+                            <button class="btn  w-100" onclick="logoutUser()">Sign Out</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row ">
+                <!-- Logo & Info -->
+                <div class="col-lg-5 col-md-6 col-sm-12 mb-3">
+                    <div class="d-flex align-items-center mb-2">
+                        <img src="images/Group 206.png" width="70" class="me-2" alt="Logo" />
+                        <h5 class="fw-bold mb-0">Wooden Dreams</h5>
+                    </div>
+                    <p class="paragraph mt-3">
+                        "At Wooden Dreams, we craft furniture that brings warmth and comfort to your home. Our wooden
+                        creations are
+                        designed to inspire sweet dreams and peaceful nights. Every piece is carefully crafted to
+                        provide a haven of
+                        relaxation and tranquility. Sleep tight, dream big with Wooden Dreams."
+                    </p>
+                    <div class="mt-4 ms-5 address">
+                        <p class="d-flex align-items-start">
+                            <i class="fas fa-location-arrow me-2 mt-1"></i> Head Office 13/5, Post office opposite,
+                            <br>Chennai.876543
+                        </p>
+                        <p class="d-flex align-items-start">
+                            <i class="fas fa-globe me-2 mt-1"></i> www.woodendreams.in
+                        </p>
+                        <p class="d-flex align-items-start">
+                            <i class="fas fa-envelope me-2 mt-1"></i> woodendreams@gmail.com
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div class="col-lg-1 col-md-3 col-sm-6 mb-4">
+                    <p class="fw-bold mt-4">LINKS</p>
+                    <ul class="list-unstyled">
+                        <li class="mt-4"><a href="#">Home</a></li>
+                        <li class="mt-4"><a href="#">About</a></li>
+                        <li class="mt-4"><a href="#">Categories</a></li>
+                        <li class="mt-4"><a href="#">Shop</a></li>
+                        <li class="mt-4"><a href="#">Blog</a></li>
+                        <li class="mt-4"><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Help -->
+                <div class="col-lg-2 col-md-3 col-sm-6 mb-4">
+                    <p class="fw-bold mt-4">HELP</p>
+                    <ul class="list-unstyled">
+                        <li class="mt-4"><a href="#">Payment Options</a></li>
+                        <li class="mt-4"><a href="#">Returns</a></li>
+                        <li class="mt-4"><a href="#">Privacy Policies</a></li>
+                    </ul>
+                </div>
+
+                <!-- Subscribe -->
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4 d-flex flex-column flex-md-column  align-items-center 
+  align-items-md-end  justify-content-center justify-content-md-between text-center text-md-start align-items-center align-items-md-start"
+                    style="overflow-x: hidden;">
+
+                    <!-- Subscribe Section -->
+                    <div class="mt-4">
+                        <h6 class="fw-bold" style="font-size: 23px;">Subscribe</h6>
+                        <form class="d-flex flex-column flex-sm-row align-items-center">
+                            <input type="email" class="subscribe-input mb-2 mb-sm-0 me-sm-2"
+                                placeholder="Enter your email" />
+                            <button type="submit" class=" subscribe-btn">SIGN UP</button>
+                        </form>
+                    </div>
+
+                    <!-- Follow Us Section -->
+                    <div class="mt-4 d-flex flex-column align-items-center align-items-md-end text-center text-md-end">
+                        <span class="fw-bold mb-2 me-md-">Follow Us</span>
+                        <div class="social-icons d-flex flex-row gap-2 justify-content-center">
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Google"><i class="fab fa-google"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom text-center">
+                <span class="">2025 Wooden Dreams. All rights reserved</span>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
