@@ -15,7 +15,7 @@ function loadCategories(limit = null) {
         col.innerHTML = `
           <a href="category_products.html?category=${encodeURIComponent(category.category_title.trim())}" class="text-decoration-none text-dark">
             <div class="category-box text-center">
-              <img src="${category.image}" alt="${category.alt || category.category_title}" class="category-img">
+              <img src="../../${category.image}" alt="${category.alt || category.category_title}" class="category-img">
               <div class="category-title text-center mt-2">${category.category_title}</div>
             </div>
           </a>
