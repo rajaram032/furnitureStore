@@ -72,7 +72,7 @@ function showSelectedCategoryProducts() {
           <span class="discount-badge">-${discount}%</span>
         </div>
         <div class="product-details">
-          <div class="product-title">${product.product_name}</div>
+          <div class="product-title" style="height:50px">${product.product_name}</div>
           <div class="product-sub">${product.subtitle}</div>
           <div class="price">₹${product.price.toLocaleString()}<span class="price-old">₹${
           product.old_price
